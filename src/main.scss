@@ -1,0 +1,90 @@
+body {
+  background: darkred;
+  margin: 10px;
+}
+
+.l-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.l-nav, 
+.l-view {
+
+}
+
+.l-nav {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.l-view {
+  flex: 1 1 auto;
+  border-left: 1px solid #ccc;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+// NAV ITEMS
+.c-nav-item {
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 0;
+
+  > * + * {
+    margin-left: 5px;
+  }
+
+  &__tree-up,
+  &__tree-down,
+  &__label {
+    border-radius: 3px;
+    padding: 2px 3px;
+  }
+
+  &__tree-up,
+  &__tree-down {
+    background: deeppink;
+    color: #fff;
+    flex: 0 0 auto;
+    font-weight: bold;
+    min-width: 20px;
+    opacity: 0;
+    text-align: center;
+  }
+
+  &__label {
+    flex: 1 1 auto;
+    &:hover {
+      background: #eee;
+    }
+  }
+
+  &--center {
+    font-weight: bold;
+  }
+
+  &--ancestors {
+    // Always show nav up element
+    .c-nav-item {
+      &__label {
+        //color: #666;
+      }
+      &__tree-up {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--siblings,
+  &--children {
+    &.c-nav-item--has-kids {
+      .c-nav-item__tree-down {
+        opacity: 1;
+      }
+    }
+  }
+}
