@@ -53,7 +53,7 @@ body {
 
   &__tree-up,
   &__tree-down {
-    background: deeppink;
+    background: $hover;
     color: #fff;
     flex: 0 0 auto;
     font-weight: bold;
@@ -97,7 +97,7 @@ body {
 
   &--children {
     .c-nav-item__label {
-      margin-left: 15px;
+      //margin-left: 15px;
     }
   }
 }

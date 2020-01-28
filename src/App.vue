@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PushNavMockup msg="Hello Vue in CodeSandbox!"/>
+    <PushNavMockup/>
   </div>
 </template>
 
