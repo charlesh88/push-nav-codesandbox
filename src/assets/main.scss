@@ -3,6 +3,10 @@ $border: 1px solid rgba(#999, 0.3);
 $hoverBg: rgba(#999, 0.2);
 $hoverFg: #ccc;
 
+@mixin test() {
+  background: rgba(yellow, 0.1);
+}
+
 /*********************************************** LAYOUT */
 body {
   background: #333;
@@ -18,9 +22,14 @@ body {
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
-.l-nav {
+.l-wrapper--nav {
   flex: 0 0 auto;
+  overflow: hidden;
   width: 300px;
+}
+
+.l-nav {
+  @include test();
 }
 
 .l-view {
@@ -112,13 +121,9 @@ body {
 
   &--ancestors {
     // Always show nav up element
-    .c-nav-item {
-      &__label {
-        //color: #666;
-      }
-      &__tree-up {
-        opacity: 1;
-      }
+    // border-bottom: 1px solid $hoverBg;
+    .c-nav-item__tree-up {
+      opacity: 1;
     }
   }
 

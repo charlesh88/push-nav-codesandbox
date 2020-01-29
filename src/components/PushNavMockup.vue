@@ -1,46 +1,48 @@
 <template>
   <div id="main" class="l-main">
-    <nav id="nav" class="l-nav">
-      <div
-        class="c-nav-item c-nav-item--ancestors"
-        v-for="item in ancestors"
-        :key="item.id"
-        :class="{ 'c-nav-item--in-view': item.id === curViewId }"
-      >
-        <div class="c-nav-item__tree-up" @click="setCurNav(item.id)"></div>
-        <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-        <div class="c-nav-item__tree-down"></div>
-      </div>
+    <div class="l-wrapper--nav">
+      <nav id="nav" class="l-nav">
+        <div
+          class="c-nav-item c-nav-item--ancestors"
+          v-for="item in ancestors"
+          :key="item.id"
+          :class="{ 'c-nav-item--in-view': item.id === curViewId }"
+        >
+          <div class="c-nav-item__tree-up" @click="setCurNav(item.id)"></div>
+          <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
+          <div class="c-nav-item__tree-down"></div>
+        </div>
 
-      <div
-        class="c-nav-item c-nav-item--siblings"
-        v-for="item in siblings"
-        :key="item.id"
-        :class="{
+        <div
+          class="c-nav-item c-nav-item--siblings"
+          v-for="item in siblings"
+          :key="item.id"
+          :class="{
           'c-nav-item--center': item.id === curNavLocId, 
           'c-nav-item--in-view': item.id === curViewId, 
           'c-nav-item--has-kids': hasKids(item) && !item.id === curNavLocId
           }"
-      >
-        <div class="c-nav-item__tree-up"></div>
-        <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-        <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
-      </div>
+        >
+          <div class="c-nav-item__tree-up"></div>
+          <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
+          <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
+        </div>
 
-      <div
-        class="c-nav-item c-nav-item--children"
-        v-for="item in children"
-        :key="item.id"
-        :class="{
+        <div
+          class="c-nav-item c-nav-item--children"
+          v-for="item in children"
+          :key="item.id"
+          :class="{
           'c-nav-item--center': item.id === curNavLocId, 
           'c-nav-item--in-view': item.id === curViewId, 
           'c-nav-item--has-kids': hasKids(item)}"
-      >
-        <div class="c-nav-item__tree-up"></div>
-        <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-        <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
-      </div>
-    </nav>
+        >
+          <div class="c-nav-item__tree-up"></div>
+          <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
+          <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
+        </div>
+      </nav>
+    </div>
     <object-view :object="mainview"></object-view>
   </div>
 </template>
