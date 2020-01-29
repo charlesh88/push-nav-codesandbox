@@ -1,16 +1,26 @@
 <template>
   <div id="main" class="l-main">
     <nav id="nav" class="l-nav">
-      <div class="c-nav-item c-nav-item--ancestors" v-for="item in ancestors" :key="item.id">
-        <div class="c-nav-item__tree-up" @click="setCurNav(item.id)">&lt;</div>
+      <div
+        class="c-nav-item c-nav-item--ancestors"
+        v-for="item in ancestors"
+        :key="item.id"
+        :class="{ 'c-nav-item--in-view': item.id === curViewId }"
+      >
+        <div class="c-nav-item__tree-up" @click="setCurNav(item.id)"></div>
         <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
+        <div class="c-nav-item__tree-down"></div>
       </div>
 
       <div
         class="c-nav-item c-nav-item--siblings"
         v-for="item in siblings"
         :key="item.id"
-        :class="{'c-nav-item--center': item.id === curNavLocId, 'c-nav-item--has-kids': hasKids(item) && !item.id === curNavLocId}"
+        :class="{
+          'c-nav-item--center': item.id === curNavLocId, 
+          'c-nav-item--in-view': item.id === curViewId, 
+          'c-nav-item--has-kids': hasKids(item) && !item.id === curNavLocId
+          }"
       >
         <div class="c-nav-item__tree-up"></div>
         <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
@@ -21,11 +31,14 @@
         class="c-nav-item c-nav-item--children"
         v-for="item in children"
         :key="item.id"
-        :class="{'c-nav-item--center': item.id === curNavLocId, 'c-nav-item--has-kids': hasKids(item)}"
+        :class="{
+          'c-nav-item--center': item.id === curNavLocId, 
+          'c-nav-item--in-view': item.id === curViewId, 
+          'c-nav-item--has-kids': hasKids(item)}"
       >
         <div class="c-nav-item__tree-up"></div>
         <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-        <div class="c-nav-item__tree-down" @click="setCurNav(item.id)">&gt;</div>
+        <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
       </div>
     </nav>
     <object-view :object="mainview"></object-view>
@@ -122,7 +135,42 @@ export default {
         { id: "telem-pwr-1027", label: "PWR-1027", parentId: "power" },
         { id: "telem-pwr-1028", label: "PWR-1028", parentId: "power" },
         { id: "telem-pwr-1029", label: "PWR-1029", parentId: "power" },
-        { id: "telem-pwr-1030", label: "PWR-1030", parentId: "power" }
+        { id: "telem-pwr-1030", label: "PWR-1030", parentId: "power" },
+        {
+          id: "telem-aaa-0009",
+          label: "AAA-0009",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0010",
+          label: "AAA-0010",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0011",
+          label: "AAA-0011",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0012",
+          label: "AAA-0012",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0013",
+          label: "AAA-0013",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0014",
+          label: "AAA-0014",
+          parentId: "overlay-plot-aaa"
+        },
+        {
+          id: "telem-aaa-0015",
+          label: "AAA-0015",
+          parentId: "overlay-plot-aaa"
+        }
       ]
     };
   },
@@ -160,7 +208,7 @@ export default {
         return [currentItem];
       }
       return this.sortAlphabetically(
-        this.navArray.filter(item => item.parentId === currentItem.parentId)
+        this.navArray.filter(item => item.parentId === currentItem.parentId) // This is the parentId that is haivng problems
       );
     },
     mainview() {
@@ -172,8 +220,9 @@ export default {
       this.curNavLocId = navLocId;
     },
     setCurView(id) {
+      let currentItem = this.getItem(id);
       this.curViewId = id;
-      this.curNavLocId = id;
+      this.curNavLocId = this.hasKids(currentItem) ? id : currentItem.parentId;
     },
     getItem(id) {
       return this.navArray.find(item => item.id === id);

@@ -1,5 +1,5 @@
 <template>
-  <div class="l-view">This is l-view {{ object.label }}</div>
+  <h2 class="l-view">{{ object.label }}</h2>
 </template>
 <script>
 export default {

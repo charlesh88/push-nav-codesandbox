@@ -1,22 +1,21 @@
+/*********************************************** VARS AND MIXINS */
 $border: 1px solid rgba(#999, 0.3);
-$hover: rgba(#999, 0.3);
+$hoverBg: rgba(#999, 0.2);
+$hoverFg: #ccc;
 
-
+/*********************************************** LAYOUT */
 body {
   background: #333;
   color: #999;
   font-family: helvetica, sans-serif;
-  margin: 10px;
 }
 
 .l-main {
   display: flex;
   flex-direction: row;
-}
-
-.l-nav, 
-.l-view {
-
+  padding: 10px;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
 }
 
 .l-nav {
@@ -31,14 +30,15 @@ body {
   padding-left: 10px;
 }
 
-// NAV ITEMS
+/*********************************************** NAV ITEMS */
 .c-nav-item {
-  border-bottom: $border;
+  // border-bottom: $border;
   cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 5px 0;
+  padding: 3px 0;
+  user-select: none;
 
   > * + * {
     margin-left: 5px;
@@ -48,30 +48,66 @@ body {
   &__tree-down,
   &__label {
     border-radius: 3px;
-    padding: 2px 3px;
+    &:hover {
+      background: $hoverBg;
+      color: $hoverFg;
+    }
   }
 
   &__tree-up,
   &__tree-down {
-    background: $hover;
+    $d: 24px;
     color: #fff;
     flex: 0 0 auto;
-    font-weight: bold;
-    min-width: 20px;
+    height: $d;
+    width: $d;
     opacity: 0;
+    position: relative;
     text-align: center;
-  }
+    &:before {
+      // Nav arrow
+      $c: rgba(#999, 0.5);
+      $d: 7px;
+      $w: 3px;
+      border: solid $c;
+      border-width: $w;
+      border-width: 0 $w $w 0;
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%; top: 50%;
+      height: $d;
+      width: $d;
+    }
 
-  &__label {
-    flex: 1 1 auto;
-    &:hover {
-      background: $hover;
+    &:hover:before {
+      border-color: $hoverFg;
     }
   }
 
+  &__tree-up:before {
+    transform: translate(-30%, -50%) rotate(135deg);
+  }
+
+  &__tree-down:before {
+    transform: translate(-70%, -50%) rotate(-45deg);
+  }
+
+  &__label {
+    padding: 4px 5px;
+    flex: 1 1 auto;
+  }
+
   &--center {
-    color: #fff;
-    font-weight: bold;
+    .c-nav-item__label {
+      color: #fff;
+    }
+  }
+
+  &--in-view {
+    .c-nav-item__label {
+      background: rgba(#999, 0.3);
+    }
   }
 
   &--ancestors {
@@ -97,7 +133,12 @@ body {
 
   &--children {
     .c-nav-item__label {
-      //margin-left: 15px;
+      margin-left: 15px;
     }
   }
+}
+
+// MISC
+h2 {
+  margin-top: 0;
 }
