@@ -1,15 +1,18 @@
 <template>
   <div id="main" class="l-main">
     <div class="l-wrapper--nav">
-      <nav id="nav" class="l-nav">
+      <nav id="nav" class="l-nav" :class="slideNav">
         <div
           class="c-nav-item c-nav-item--ancestors"
           v-for="item in ancestors"
           :key="item.id"
           :class="{ 'c-nav-item--in-view': item.id === curViewId }"
         >
-          <div class="c-nav-item__tree-up" @click="setCurNav(item.id)"></div>
-          <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
+          <div class="c-nav-item__tree-up" @click="setCurNav(item.id), transitionNav('up')"></div>
+          <div
+            class="c-nav-item__label"
+            @click="setCurView(item.id), transitionNav('up')"
+          >{{ item.label }}</div>
           <div class="c-nav-item__tree-down"></div>
         </div>
 
@@ -25,7 +28,7 @@
         >
           <div class="c-nav-item__tree-up"></div>
           <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-          <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
+          <div class="c-nav-item__tree-down" @click="setCurNav(item.id), transitionNav('down')"></div>
         </div>
 
         <div
@@ -38,8 +41,11 @@
           'c-nav-item--has-kids': hasKids(item)}"
         >
           <div class="c-nav-item__tree-up"></div>
-          <div class="c-nav-item__label" @click="setCurView(item.id)">{{ item.label }}</div>
-          <div class="c-nav-item__tree-down" @click="setCurNav(item.id)"></div>
+          <div
+            class="c-nav-item__label"
+            @click="setCurView(item.id), transitionNav('down')"
+          >{{ item.label }}</div>
+          <div class="c-nav-item__tree-down" @click="setCurNav(item.id), transitionNav('down')"></div>
         </div>
       </nav>
     </div>
@@ -60,6 +66,7 @@ export default {
     return {
       curNavLocId: undefined,
       curViewId: undefined,
+      slideNav: "",
       navArray: [
         { id: "myitems", label: "My Items", parentId: "root" },
         { id: "layouts", label: "Layouts", parentId: "myitems" },
@@ -218,13 +225,21 @@ export default {
     }
   },
   methods: {
-    setCurNav(navLocId) {
+    setCurNav(navLocId, direction) {
       this.curNavLocId = navLocId;
     },
     setCurView(id) {
       let currentItem = this.getItem(id);
       this.curViewId = id;
       this.curNavLocId = this.hasKids(currentItem) ? id : currentItem.parentId;
+    },
+    transitionNav(direction) {
+      // direction is either up or down in the tree
+      this.slideNav = direction === "up" ? "slide-right" : "slide-left";
+      setTimeout(this.transitionNavClear, 500);
+    },
+    transitionNavClear() {
+      this.slideNav = "";
     },
     getItem(id) {
       return this.navArray.find(item => item.id === id);
@@ -234,6 +249,10 @@ export default {
     },
     hasKids(node) {
       return !!this.navArray.find(item => item.parentId === node.id);
+    },
+    slideNavLeft() {
+      // Sets the slideNav property to 'slideLeft',
+      // Adds a timeout function to set slideNav to null after 1 second
     }
   }
 };

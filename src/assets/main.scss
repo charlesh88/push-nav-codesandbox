@@ -28,10 +28,6 @@ body {
   width: 300px;
 }
 
-.l-nav {
-  @include test();
-}
-
 .l-view {
   flex: 1 1 auto;
   border-left: $border;
@@ -119,14 +115,6 @@ body {
     }
   }
 
-  &--ancestors {
-    // Always show nav up element
-    // border-bottom: 1px solid $hoverBg;
-    .c-nav-item__tree-up {
-      opacity: 1;
-    }
-  }
-
   &--siblings,
   &--children {
     &.c-nav-item--has-kids {
@@ -136,11 +124,52 @@ body {
     }
   }
 
+  &--ancestors {
+    // Always show nav up element
+    // border-bottom: 1px solid $hoverBg;
+    background: rgba(red, 0.2);
+    .c-nav-item__tree-up {
+      opacity: 1;
+    }
+  }
+
+  &--siblings {
+    background: rgba(green, 0.2);
+  }
+
   &--children {
+    background: rgba(blue, 0.2);
     .c-nav-item__label {
       margin-left: 15px;
     }
   }
+}
+
+// TRANSITIONS
+.slide-left,
+.slide-right {
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+}
+
+.slide-left {
+  animation-name: animSlideLeft;
+}
+
+.slide-right {
+  animation-name: animSlideRight;
+}
+
+@keyframes animSlideLeft {
+  0% {opactiy: 0; transform: translateX(100%);}
+  5% {opacity: 1;}
+  100% {transform: translateX(0);}
+}
+
+@keyframes animSlideRight {
+  0% {opactiy: 0; transform: translateX(-100%);}
+  5% {opacity: 1;}
+  100% {transform: translateX(0);}
 }
 
 // MISC
