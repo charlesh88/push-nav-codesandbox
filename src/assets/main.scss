@@ -9,9 +9,12 @@ $hoverFg: #ccc;
 
 /*********************************************** LAYOUT */
 body {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   background: #333;
   color: #999;
-  font-family: helvetica, sans-serif;
 }
 
 .l-main {
@@ -23,8 +26,8 @@ body {
 }
 
 .l-wrapper--nav {
+  display: flex;
   flex: 0 0 auto;
-  overflow: hidden;
   width: 300px;
 }
 
@@ -37,16 +40,29 @@ body {
 
 /*********************************************** NAV */
 .c-nav {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+
+  &--ancestors,
+  &--siblings {
+    flex: 0 0 auto;
+  }
+  
   &--ancestors {
-    // @include test(red, 0.2);
+    // @include test(red, 0.1);
   }
 
   &--siblings {
-    // @include test(green, 0.2);
+    // @include test(green, 0.1);
   }
 
   &--children {
-    // @include test(blue, 0.2);
+    // @include test(blue, 0.1);
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div id="main" class="l-main">
     <div class="l-wrapper--nav">
-      <nav id="nav" class="l-nav">
+      <nav id="nav" class="c-nav">
         <div class="c-nav__section c-nav--ancestors">
           <div
             class="c-nav__item c-nav__item--ancestor"
