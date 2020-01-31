@@ -3,8 +3,8 @@ $border: 1px solid rgba(#999, 0.3);
 $hoverBg: rgba(#999, 0.2);
 $hoverFg: #ccc;
 
-@mixin test() {
-  background: rgba(yellow, 0.1);
+@mixin test($c: yellow, $o: 0.2) {
+  background: rgba($c, $o);
 }
 
 /*********************************************** LAYOUT */
@@ -35,8 +35,23 @@ body {
   padding-left: 10px;
 }
 
+/*********************************************** NAV */
+.c-nav {
+  &--ancestors {
+    // @include test(red, 0.2);
+  }
+
+  &--siblings {
+    // @include test(green, 0.2);
+  }
+
+  &--children {
+    // @include test(blue, 0.2);
+  }
+}
+
 /*********************************************** NAV ITEMS */
-.c-nav-item {
+.c-nav__item {
   // border-bottom: $border;
   cursor: pointer;
   display: flex;
@@ -104,42 +119,36 @@ body {
   }
 
   &--center {
-    .c-nav-item__label {
+    .c-nav__item__label {
       color: #fff;
     }
   }
 
   &--in-view {
-    .c-nav-item__label {
+    .c-nav__item__label {
       background: rgba(#999, 0.3);
     }
   }
 
-  &--siblings,
-  &--children {
-    &.c-nav-item--has-kids {
-      .c-nav-item__tree-down {
+  &--ancestor {
+    // Always show nav up element
+    // border-bottom: 1px solid $hoverBg;
+    .c-nav__item__tree-up {
+      opacity: 1;
+    }
+  }
+
+  &--sibling,
+  &--child {
+    &.c-nav__item--has-kids {
+      .c-nav__item__tree-down {
         opacity: 1;
       }
     }
   }
 
-  &--ancestors {
-    // Always show nav up element
-    // border-bottom: 1px solid $hoverBg;
-    background: rgba(red, 0.2);
-    .c-nav-item__tree-up {
-      opacity: 1;
-    }
-  }
-
-  &--siblings {
-    background: rgba(green, 0.2);
-  }
-
-  &--children {
-    background: rgba(blue, 0.2);
-    .c-nav-item__label {
+  &--child {
+    .c-nav__item__label {
       margin-left: 15px;
     }
   }
@@ -150,6 +159,8 @@ body {
 .slide-right {
   animation-duration: 500ms;
   animation-iteration-count: 1;
+  transition: all;
+  transition-timing-function: ease-in-out;
 }
 
 .slide-left {
@@ -162,13 +173,13 @@ body {
 
 @keyframes animSlideLeft {
   0% {opactiy: 0; transform: translateX(100%);}
-  5% {opacity: 1;}
+  10% {opacity: 1;}
   100% {transform: translateX(0);}
 }
 
 @keyframes animSlideRight {
   0% {opactiy: 0; transform: translateX(-100%);}
-  5% {opacity: 1;}
+  10% {opacity: 1;}
   100% {transform: translateX(0);}
 }
 

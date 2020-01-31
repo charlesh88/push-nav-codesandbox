@@ -1,45 +1,51 @@
 <template>
   <div id="main" class="l-main">
     <div class="l-wrapper--nav">
-      <nav id="nav" class="l-nav" :class="slideNav">
-        <div
-          class="c-nav-item c-nav-item--ancestors"
-          v-for="item in ancestors"
-          :key="item.id"
-          :class="{ 'c-nav-item--in-view': item.id === viewId }"
-        >
-          <div class="c-nav-item__tree-up" @click="setNav(item.id)"></div>
-          <div class="c-nav-item__label" @click="setView(item.id)">{{ item.label }}</div>
-          <div class="c-nav-item__tree-down"></div>
+      <nav id="nav" class="l-nav">
+        <div class="c-nav__section c-nav--ancestors">
+          <div
+            class="c-nav__item c-nav__item--ancestor"
+            v-for="item in ancestors"
+            :key="item.id"
+            :class="{ 'c-nav__item--in-view': item.id === viewId }"
+          >
+            <div class="c-nav__item__tree-up" @click="setNav(item.id)"></div>
+            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
+            <div class="c-nav__item__tree-down"></div>
+          </div>
         </div>
 
-        <div
-          class="c-nav-item c-nav-item--siblings"
-          v-for="item in siblings"
-          :key="item.id"
-          :class="{
-          'c-nav-item--center': item.id === navId, 
-          'c-nav-item--in-view': item.id === viewId, 
-          'c-nav-item--has-kids': hasKids(item) && !item.id === navId
-          }"
-        >
-          <div class="c-nav-item__tree-up"></div>
-          <div class="c-nav-item__label" @click="setView(item.id)">{{ item.label }}</div>
-          <div class="c-nav-item__tree-down" @click="setNav(item.id)"></div>
+        <div class="c-nav__section c-nav--siblings">
+          <div
+            class="c-nav__item c-nav__item--sibling"
+            v-for="item in siblings"
+            :key="item.id"
+            :class="{
+            'c-nav__item--center': item.id === navId, 
+            'c-nav__item--in-view': item.id === viewId, 
+            'c-nav__item--has-kids': hasKids(item) && !item.id === navId
+            }"
+          >
+            <div class="c-nav__item__tree-up"></div>
+            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
+            <div class="c-nav__item__tree-down" @click="setNav(item.id)"></div>
+          </div>
         </div>
 
-        <div
-          class="c-nav-item c-nav-item--children"
-          v-for="item in children"
-          :key="item.id"
-          :class="{
-          'c-nav-item--center': item.id === navId, 
-          'c-nav-item--in-view': item.id === viewId, 
-          'c-nav-item--has-kids': hasKids(item)}"
-        >
-          <div class="c-nav-item__tree-up"></div>
-          <div class="c-nav-item__label" @click="setView(item.id)">{{ item.label }}</div>
-          <div class="c-nav-item__tree-down" @click="setNav(item.id)"></div>
+        <div class="c-nav__section c-nav--children" :class="moveInNav">
+          <div
+            class="c-nav__item c-nav__item--child"
+            v-for="item in children"
+            :key="item.id"
+            :class="{
+            'c-nav__item--center': item.id === navId, 
+            'c-nav__item--in-view': item.id === viewId, 
+            'c-nav__item--has-kids': hasKids(item)}"
+          >
+            <div class="c-nav__item__tree-up"></div>
+            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
+            <div class="c-nav__item__tree-down" @click="setNav(item.id)"></div>
+          </div>
         </div>
       </nav>
     </div>
@@ -62,7 +68,7 @@ export default {
     return {
       navId: undefined,
       viewId: undefined,
-      slideNav: "",
+      moveInNav: "",
       navArray: data
     };
   },
@@ -125,11 +131,11 @@ export default {
     },
     transitionNav(direction) {
       // direction is either up or down in the tree
-      this.slideNav = direction === "up" ? "slide-right" : "slide-left";
+      this.moveInNav = direction === "up" ? "slide-right" : "slide-left";
       setTimeout(this.transitionNavClear, 500);
     },
     transitionNavClear() {
-      this.slideNav = "";
+      this.moveInNav = "";
     },
     getItem(id) {
       return this.navArray.find(item => item.id === id);
