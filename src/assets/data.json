@@ -1,0 +1,114 @@
+[
+  { "id": "myitems", "label": "My Items", "parentId": "root" },
+  { "id": "layouts", "label": "Layouts", "parentId": "myitems" },
+  { "id": "plots", "label": "Plots", "parentId": "myitems" },
+  { "id": "tables", "label": "Tables", "parentId": "myitems" },
+  {
+    "id": "overlay-plot-dmx",
+    "label": "DMX Overlay Plot",
+    "parentId": "plots"
+  },
+  {
+    "id": "overlay-plot-aaa",
+    "label": "AAA Overlay Plot",
+    "parentId": "plots"
+  },
+  {
+    "id": "telem-dmx-4001",
+    "label": "DMX-4001",
+    "parentId": "overlay-plot-dmx"
+  },
+  {
+    "id": "telem-dmx-4002",
+    "label": "DMX-4002",
+    "parentId": "overlay-plot-dmx"
+  },
+  {
+    "id": "telem-dmx-4003",
+    "label": "DMX-4003",
+    "parentId": "overlay-plot-dmx"
+  },
+  { "id": "dash-rtsci", "label": "RT SCI Dashboard", "parentId": "layouts" },
+  { "id": "dash-nirvss", "label": "NIRVSS Dashboard", "parentId": "layouts" },
+  { "id": "dash-flight", "label": "Flight Dashboard", "parentId": "layouts" },
+  {
+    "id": "ovw-roversys",
+    "label": "Rover Sys Overview",
+    "parentId": "layouts"
+  },
+  { "id": "alarms", "label": "Alarms", "parentId": "tables" },
+  { "id": "thermal", "label": "Thermal", "parentId": "tables" },
+  { "id": "power", "label": "Power", "parentId": "tables" },
+  { "id": "comm", "label": "Comm", "parentId": "tables" },
+  { "id": "alarms-red", "label": "Red Alarms", "parentId": "alarms" },
+  { "id": "alarms-yellow", "label": "Yellow Alarms", "parentId": "alarms" },
+  { "id": "telem-thrm-5203", "label": "THRM-5203", "parentId": "thermal" },
+  { "id": "telem-thrm-5204", "label": "THRM-5204", "parentId": "thermal" },
+  { "id": "telem-thrm-5205", "label": "THRM-5205", "parentId": "thermal" },
+  { "id": "telem-thrm-5206", "label": "THRM-5206", "parentId": "thermal" },
+  { "id": "telem-thrm-5207", "label": "THRM-5207", "parentId": "thermal" },
+  { "id": "telem-pwr-1002", "label": "PWR-1002", "parentId": "power" },
+  { "id": "telem-pwr-1003", "label": "PWR-1003", "parentId": "power" },
+  { "id": "telem-pwr-1004", "label": "PWR-1004", "parentId": "power" },
+  { "id": "telem-pwr-1005", "label": "PWR-1005", "parentId": "power" },
+  { "id": "telem-pwr-1006", "label": "PWR-1006", "parentId": "power" },
+  { "id": "telem-pwr-1007", "label": "PWR-1007", "parentId": "power" },
+  { "id": "telem-pwr-1008", "label": "PWR-1008", "parentId": "power" },
+  { "id": "telem-pwr-1009", "label": "PWR-1009", "parentId": "power" },
+  { "id": "telem-pwr-1010", "label": "PWR-1010", "parentId": "power" },
+  { "id": "telem-pwr-1011", "label": "PWR-1011", "parentId": "power" },
+  { "id": "telem-pwr-1012", "label": "PWR-1012", "parentId": "power" },
+  { "id": "telem-pwr-1013", "label": "PWR-1013", "parentId": "power" },
+  { "id": "telem-pwr-1014", "label": "PWR-1014", "parentId": "power" },
+  { "id": "telem-pwr-1015", "label": "PWR-1015", "parentId": "power" },
+  { "id": "telem-pwr-1016", "label": "PWR-1016", "parentId": "power" },
+  { "id": "telem-pwr-1017", "label": "PWR-1017", "parentId": "power" },
+  { "id": "telem-pwr-1018", "label": "PWR-1018", "parentId": "power" },
+  { "id": "telem-pwr-1019", "label": "PWR-1019", "parentId": "power" },
+  { "id": "telem-pwr-1020", "label": "PWR-1020", "parentId": "power" },
+  { "id": "telem-pwr-1021", "label": "PWR-1021", "parentId": "power" },
+  { "id": "telem-pwr-1022", "label": "PWR-1022", "parentId": "power" },
+  { "id": "telem-pwr-1023", "label": "PWR-1023", "parentId": "power" },
+  { "id": "telem-pwr-1024", "label": "PWR-1024", "parentId": "power" },
+  { "id": "telem-pwr-1025", "label": "PWR-1025", "parentId": "power" },
+  { "id": "telem-pwr-1026", "label": "PWR-1026", "parentId": "power" },
+  { "id": "telem-pwr-1027", "label": "PWR-1027", "parentId": "power" },
+  { "id": "telem-pwr-1028", "label": "PWR-1028", "parentId": "power" },
+  { "id": "telem-pwr-1029", "label": "PWR-1029", "parentId": "power" },
+  { "id": "telem-pwr-1030", "label": "PWR-1030", "parentId": "power" },
+  {
+    "id": "telem-aaa-0009",
+    "label": "AAA-0009",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0010",
+    "label": "AAA-0010",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0011",
+    "label": "AAA-0011",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0012",
+    "label": "AAA-0012",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0013",
+    "label": "AAA-0013",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0014",
+    "label": "AAA-0014",
+    "parentId": "overlay-plot-aaa"
+  },
+  {
+    "id": "telem-aaa-0015",
+    "label": "AAA-0015",
+    "parentId": "overlay-plot-aaa"
+  }
+]
