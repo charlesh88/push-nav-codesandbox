@@ -8,9 +8,10 @@
             v-for="item in ancestors"
             :key="item.id"
             :class="{ 'c-nav__item--in-view': item.id === viewId }"
+            @click="setView(item.id)"
           >
-            <div class="c-nav__item__tree-up" @click="setNav(item.id)"></div>
-            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
+            <div class="c-nav__item__tree-up" @click.stop="setNav(item.id)"></div>
+            <div class="c-nav__item__label">{{ item.label }}</div>
             <div class="c-nav__item__tree-down"></div>
           </div>
         </div>
@@ -25,10 +26,11 @@
             'c-nav__item--in-view': item.id === viewId, 
             'c-nav__item--has-kids': hasKids(item) && !item.id === navId
             }"
+            @click="setView(item.id)"
           >
             <div class="c-nav__item__tree-up"></div>
-            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
-            <div class="c-nav__item__tree-down" @click="setNav(item.id)"></div>
+            <div class="c-nav__item__label">{{ item.label }}</div>
+            <div class="c-nav__item__tree-down" @click.stop="setNav(item.id)"></div>
           </div>
         </div>
 
@@ -40,11 +42,13 @@
             :class="{
             'c-nav__item--center': item.id === navId, 
             'c-nav__item--in-view': item.id === viewId, 
-            'c-nav__item--has-kids': hasKids(item)}"
+            'c-nav__item--has-kids': hasKids(item)
+            }"
+            @click="setView(item.id)"
           >
             <div class="c-nav__item__tree-up"></div>
-            <div class="c-nav__item__label" @click="setView(item.id)">{{ item.label }}</div>
-            <div class="c-nav__item__tree-down" @click="setNav(item.id)"></div>
+            <div class="c-nav__item__label">{{ item.label }}</div>
+            <div class="c-nav__item__tree-down" @click.stop="setNav(item.id)"></div>
           </div>
         </div>
       </nav>

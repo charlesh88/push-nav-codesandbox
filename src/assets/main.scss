@@ -1,7 +1,11 @@
 /*********************************************** VARS AND MIXINS */
-$border: 1px solid rgba(#999, 0.3);
-$hoverBg: rgba(#999, 0.2);
+$border: 1px solid rgba(#999, 0.1);
+$hoverBg: rgba(#000, 0.1);
 $hoverFg: #ccc;
+$colorKey: #0099cc;
+$colorKeyFg: #fff;
+$colorKeyHov: #26d8ff;
+$interiorMargin: 5px;
 
 @mixin test($c: yellow, $o: 0.2) {
   background: rgba($c, $o);
@@ -68,16 +72,31 @@ body {
 
 /*********************************************** NAV ITEMS */
 .c-nav__item {
-  // border-bottom: $border;
+  $d: 20px;
+  border-bottom: $border;
   cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 3px 0;
+  padding: 1px 0;
   user-select: none;
 
   > * + * {
-    margin-left: 5px;
+    margin-left: $interiorMargin;
+  }
+
+  &:before {
+    // In-view indicator
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    margin-right: 5px;
+    height: $d;
+    width: 5px;
+  }
+
+  &:hover {
+    background: $hoverBg;
   }
 
   &__tree-up,
@@ -85,19 +104,19 @@ body {
   &__label {
     border-radius: 3px;
     &:hover {
-      background: $hoverBg;
-      color: $hoverFg;
+      // background: $hoverBg;
+      color: $colorKey;
     }
   }
 
   &__tree-up,
   &__tree-down {
-    $d: 24px;
     color: #fff;
     flex: 0 0 auto;
     height: $d;
     width: $d;
     opacity: 0;
+    pointer-events: none;
     position: relative;
     text-align: center;
     &:before {
@@ -141,8 +160,8 @@ body {
   }
 
   &--in-view {
-    .c-nav__item__label {
-      background: rgba(#999, 0.3);
+    &:before {
+      background: $colorKey;
     }
   }
 
@@ -151,6 +170,7 @@ body {
     // border-bottom: 1px solid $hoverBg;
     .c-nav__item__tree-up {
       opacity: 1;
+      pointer-events: inherit;
     }
   }
 
@@ -159,6 +179,7 @@ body {
     &.c-nav__item--has-kids {
       .c-nav__item__tree-down {
         opacity: 1;
+        pointer-events: inherit;
       }
     }
   }
