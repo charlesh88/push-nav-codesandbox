@@ -1,5 +1,7 @@
 <template>
-  <h2 class="l-view">{{ object.label }}</h2>
+  <h2 class="l-view">
+    <div class="l-view__label">{{ object.label }}</div>
+  </h2>
 </template>
 <script>
 export default {

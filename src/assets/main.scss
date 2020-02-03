@@ -13,6 +13,19 @@ $interiorMargin: 5px;
   white-space: nowrap;
 }
 
+@mixin placeholderTypeIcon($size: 12px, $offset: 3px) {
+  $b: floor($size/4);
+  content: "";
+  box-sizing: border-box;
+  display: inline-block;
+  height: $size;
+  width: $size;
+  border: $b solid $colorKey;
+  border-radius: $b;
+  margin-right: $interiorMargin;
+  transform: translateY($offset);
+}
+
 @mixin test($c: yellow, $o: 0.2) {
   background: rgba($c, $o);
 }
@@ -46,6 +59,12 @@ body {
   border-left: $border;
   margin-left: 10px;
   padding-left: 10px;
+
+  &__label {
+    &:before {
+      @include placeholderTypeIcon(18px, 3px);
+    }
+  }
 }
 
 /*********************************************** NAV */
@@ -159,16 +178,7 @@ body {
     padding: 4px 5px;
     flex: 1 1 auto;
     &:before {
-      $d: 14px;
-      content: "";
-      box-sizing: border-box;
-      display: inline-block;
-      height: $d;
-      width: $d;
-      border: 3px solid $colorKey;
-      border-radius: 3px;
-      margin-right: $interiorMargin;
-      transform: translateY(3px);
+      @include placeholderTypeIcon(14px, 3px);
     }
   }
 
