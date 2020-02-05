@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import data from "../assets/data.json";
+import data from "../assets/notebook-data.json";
 import ObjectView from "./ObjectView";
 
 const STARTING_ID = "myitems";

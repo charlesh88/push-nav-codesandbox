@@ -1,0 +1,200 @@
+[
+  {
+    "id": "myitems",
+    "label": "Flight Days",
+    "parentId": "root",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-1",
+    "label": "Flight Day 1",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-2",
+    "label": "Flight Day 2",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-3",
+    "label": "Flight Day 3",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-4",
+    "label": "Flight Day 4",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-5",
+    "label": "Flight Day 5",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-6",
+    "label": "Flight Day 6",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-7",
+    "label": "Flight Day 7",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-8",
+    "label": "Flight Day 8",
+    "parentId": "myitems",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-1-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-1",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-1-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-1",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-1-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-1",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-2-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-2",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-2-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-2",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-2-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-2",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-3-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-3",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-3-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-3",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-3-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-3",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-4-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-4",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-4-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-4",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-4-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-4",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-5-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-5",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-5-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-5",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-5-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-5",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-6-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-6",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-6-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-6",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-6-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-6",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-7-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-7",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-7-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-7",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-7-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-7",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-8-shift-1",
+    "label": "Shift 1",
+    "parentId": "flight-day-8",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-8-shift-2",
+    "label": "Shift 2",
+    "parentId": "flight-day-8",
+    "cssClass": ""
+  },
+  {
+    "id": "flight-day-8-shift-3",
+    "label": "Shift 3",
+    "parentId": "flight-day-8",
+    "cssClass": ""
+  }
+]

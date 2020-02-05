@@ -6,6 +6,9 @@ $colorKey: #0099cc;
 $colorKeyFg: #fff;
 $colorKeyHov: #26d8ff;
 $interiorMargin: 5px;
+$colorKey2: $colorKey;
+$navInViewIndicator: $colorKey;
+$navInViewBg: darken($colorKey, 30%);
 
 @mixin ellipsize() {
   overflow: hidden;
@@ -189,8 +192,9 @@ body {
   }
 
   &--in-view {
+    // background: rgba($navInViewBg, 0.4);
     &:before {
-      background: $colorKey;
+      background: $navInViewIndicator;
     }
   }
 
