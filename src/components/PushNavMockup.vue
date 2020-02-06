@@ -62,7 +62,7 @@
         </div>
       </nav>
     </div>
-    <object-view :object="mainview"></object-view>
+    <object-view :object="mainview" @sync-nav="setNav"></object-view>
   </div>
 </template>
 
@@ -98,6 +98,7 @@ export default {
   },
   mounted() {
     this.viewId = this.navId = STARTING_ID;
+    this.$on("sync-nav", this.object.id);
   },
   computed: {
     ancestors() {
@@ -137,11 +138,13 @@ export default {
     }
   },
   methods: {
-    setNav(navLocId, direction) {
+    setNav(navLocId) {
       this.navId = navLocId;
+      console.log("setNav", this.viewId);
     },
     setView(id) {
       this.viewId = id;
+      console.log(this.viewId);
       if (AUTO_UPDATE_NAV_ON_CLICK) {
         let currentItem = this.getItem(id);
         this.navId = this.hasKids(currentItem) ? id : currentItem.parentId;
