@@ -880,5 +880,11 @@
     "label": "PWR-1094",
     "parentId": "dash-rtsci",
     "cssClass": "icon-telemetry"
+  },
+  {
+    "id": "nochildren",
+    "label": "No Children",
+    "parentId": "myitems",
+    "cssClass": "icon-folder"
   }
 ]

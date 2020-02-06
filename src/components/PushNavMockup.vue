@@ -5,13 +5,16 @@
         <div class="c-nav__section c-nav--ancestors">
           <div
             class="c-nav__item c-nav__item--ancestor"
-            v-for="item in ancestors"
+            v-for="(item, index) in ancestors"
             :key="item.id"
             :class="{ 'c-nav__item--in-view': item.id === viewId }"
             @click="setView(item.id)"
           >
             <div class="c-nav__item__tree-up" @click.stop="setNav(item.id)"></div>
-            <div class="c-nav__item__label">{{ item.label }}</div>
+            <div
+              class="c-nav__item__label"
+              :style="{ marginLeft: index * navMarginPx + 'px' }"
+            >{{ item.label }}</div>
             <div class="c-nav__item__tree-down"></div>
           </div>
         </div>
@@ -29,7 +32,10 @@
             @click="setView(item.id)"
           >
             <div class="c-nav__item__tree-up"></div>
-            <div class="c-nav__item__label">{{ item.label }}</div>
+            <div
+              class="c-nav__item__label"
+              :style="{ marginLeft: ancestors.length * navMarginPx + 'px' }"
+            >{{ item.label }}</div>
             <div class="c-nav__item__tree-down" @click.stop="setNav(item.id)"></div>
           </div>
         </div>
@@ -47,7 +53,10 @@
             @click="setView(item.id)"
           >
             <div class="c-nav__item__tree-up"></div>
-            <div class="c-nav__item__label">{{ item.label }}</div>
+            <div
+              class="c-nav__item__label"
+              :style="{ marginLeft: ancestors.length * navMarginPx + navMarginPx + 'px' }"
+            >{{ item.label }}</div>
             <div class="c-nav__item__tree-down" @click.stop="setNav(item.id)"></div>
           </div>
         </div>
@@ -58,10 +67,11 @@
 </template>
 
 <script>
-import data from "../assets/notebook-data.json";
+import data from "../assets/data.json";
 import ObjectView from "./ObjectView";
 
 const STARTING_ID = "myitems";
+const AUTO_UPDATE_NAV_ON_CLICK = false;
 
 export default {
   name: "PushNavMockup",
@@ -73,7 +83,9 @@ export default {
       navId: undefined,
       viewId: undefined,
       moveInNav: "",
-      navArray: data
+      navArray: data,
+      navMarginPx: 10,
+      autoUpdateNavOnItemClick: false
     };
   },
   watch: {
@@ -129,9 +141,11 @@ export default {
       this.navId = navLocId;
     },
     setView(id) {
-      let currentItem = this.getItem(id);
       this.viewId = id;
-      this.navId = this.hasKids(currentItem) ? id : currentItem.parentId;
+      if (AUTO_UPDATE_NAV_ON_CLICK) {
+        let currentItem = this.getItem(id);
+        this.navId = this.hasKids(currentItem) ? id : currentItem.parentId;
+      }
     },
     transitionNav(direction) {
       // direction is either up or down in the tree

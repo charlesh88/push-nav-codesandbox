@@ -5,6 +5,8 @@ $hoverFg: #ccc;
 $colorKey: #0099cc;
 $colorKeyFg: #fff;
 $colorKeyHov: #26d8ff;
+$colorInView: #fff;
+$colorInViewSubtle: #ccc;
 $interiorMargin: 5px;
 $colorKey2: $colorKey;
 $navInViewIndicator: $colorKey;
@@ -64,8 +66,10 @@ body {
   padding-left: 10px;
 
   &__label {
+    color: $colorInView;
     &:before {
       @include placeholderTypeIcon(18px, 3px);
+      border-color: $colorInViewSubtle;
     }
   }
 }
@@ -95,6 +99,7 @@ body {
     flex: 1 1 auto;
     overflow-x: hidden;
     overflow-y: auto;
+    transition: all;
   }
 }
 
@@ -109,19 +114,9 @@ body {
   padding: 1px 0;
   user-select: none;
 
-  > * + * {
-    margin-left: $interiorMargin;
-  }
-
-  &:before {
-    // In-view indicator
-    content: '';
-    display: block;
-    flex: 0 0 auto;
-    margin-right: 5px;
-    height: $d;
-    width: 5px;
-  }
+  // > * + * {
+  //   // margin-left: $interiorMargin;
+  // }
 
   &:hover {
     background: $hoverBg;
@@ -132,8 +127,7 @@ body {
   &__label {
     border-radius: 3px;
     &:hover {
-      // background: $hoverBg;
-      color: $colorKey;
+      color: darken($colorKeyFg, 10%);
     }
   }
 
@@ -177,6 +171,7 @@ body {
   }
 
   &__label {
+    // @include test(yellow);
     @include ellipsize();
     padding: 4px 5px;
     flex: 1 1 auto;
@@ -185,22 +180,16 @@ body {
     }
   }
 
-  &--center {
-    .c-nav__item__label {
-      color: #fff;
-    }
-  }
-
   &--in-view {
-    // background: rgba($navInViewBg, 0.4);
-    &:before {
-      background: $navInViewIndicator;
+    $c: $colorInView;
+    color: $c;
+    .c-nav__item__label:before {
+      border-color: $colorInViewSubtle;
     }
   }
 
   &--ancestor {
     // Always show nav up element
-    // border-bottom: 1px solid $hoverBg;
     .c-nav__item__tree-up {
       opacity: 1;
       pointer-events: inherit;
@@ -214,12 +203,6 @@ body {
         opacity: 1;
         pointer-events: inherit;
       }
-    }
-  }
-
-  &--child {
-    .c-nav__item__label {
-      margin-left: 15px;
     }
   }
 }
